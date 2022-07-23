@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/birdFragment">
 
+    <fragment
+        android:id="@+id/birdFragment"
+        android:name="com.illis.qrgenerator.BirdFragment"
+        android:label="BirdFragment" >
+        <action
+            android:id="@+id/action_birdFragment_to_catFragment"
+            app:destination="@id/catFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catFragment"
+        android:name="com.illis.qrgenerator.CatFragment"
+        android:label="CatFragment" >
+        <action
+            android:id="@+id/action_catFragment_to_dogFragment"
+            app:destination="@id/dogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogFragment"
+        android:name="com.illis.qrgenerator.DogFragment"
+        android:label="DogFragment" />
 </navigation>
