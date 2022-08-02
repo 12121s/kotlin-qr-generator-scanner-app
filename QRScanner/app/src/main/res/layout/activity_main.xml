@@ -10,10 +10,6 @@
         android:id="@+id/qr_scanner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:zxing_scanner_layout="@layout/view_qr_scanner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:zxing_scanner_layout="@layout/view_qr_scanner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
