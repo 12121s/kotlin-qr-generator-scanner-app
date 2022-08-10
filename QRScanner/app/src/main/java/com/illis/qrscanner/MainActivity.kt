@@ -1,50 +1,41 @@
 package com.illis.qrscanner
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.zxing.BarcodeFormat
 import com.google.zxing.client.android.Intents
 import com.google.zxing.integration.android.IntentIntegrator
-import com.journeyapps.barcodescanner.CaptureManager
-import com.journeyapps.barcodescanner.DecoratedBarcodeView
-import com.journeyapps.barcodescanner.ScanContract
-import com.journeyapps.barcodescanner.ScanOptions
+import com.journeyapps.barcodescanner.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var manager : CaptureManager
     private lateinit var barcodeView : DecoratedBarcodeView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        runQRcodeReader()
         barcodeView = findViewById(R.id.qr_scanner)
-
-        manager = CaptureManager(this, barcodeView)
-        manager.initializeFromIntent(intent, savedInstanceState)
-        manager.decode()
-
-//        runQRcodeReader()
+        barcodeView.run {
+            this.decoderFactory = DefaultDecoderFactory(mutableListOf(BarcodeFormat.QR_CODE, BarcodeFormat.CODE_39))
+            initializeFromIntent(intent)
+            decodeContinuous {
+                Log.d("TEST", "message=${it.text}")
+                barcodeView.stopDecoding()
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        manager.onResume()
+        barcodeView.resume()
     }
 
     override fun onPause() {
         super.onPause()
-        manager.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        manager.onDestroy()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        manager.onSaveInstanceState(outState)
+        barcodeView.pause()
     }
 
     private fun runQRcodeReader() {
