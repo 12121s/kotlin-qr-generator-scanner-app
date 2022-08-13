@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             initializeFromIntent(intent)
             decodeContinuous {
                 Log.d("TEST", "message=${it.text}")
+                Toast.makeText(this@MainActivity, "message = ${it.text}", Toast.LENGTH_LONG).show()
                 barcodeView.stopDecoding()
             }
         }
