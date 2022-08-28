@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_bird"
+        android:id="@+id/birdFragment"
         android:enabled="true"
         android:icon="@drawable/bird"
         android:title="bird"/>
 
     <item
-        android:id="@+id/page_cat"
+        android:id="@+id/catFragment"
         android:enabled="true"
         android:icon="@drawable/cat"
         android:title="cat"/>
 
     <item
-        android:id="@+id/page_dog"
+        android:id="@+id/dogFragment"
         android:enabled="true"
         android:icon="@drawable/dog"
         android:title="dog"/>
